@@ -4,6 +4,7 @@ import { Condition } from '../../generated/prisma/enums';
 import { Stuff } from '../../generated/prisma/client';
 import { hash } from 'bcrypt';
 import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 import { prisma } from './prisma';
 
 /**
@@ -55,13 +56,12 @@ export async function editStuff(stuff: Stuff) {
  * Deletes an existing stuff from the database.
  * @param id, the id of the stuff to delete.
  */
-export async function deleteStuff(id: number) {
-  // console.log(`deleteStuff id: ${id}`);
+export async function deleteStuff(id: string) {
   await prisma.stuff.delete({
     where: { id },
   });
-  // After deleting, redirect to the list page
-  redirect('/list');
+
+  revalidatePath('/list');
 }
 
 /**

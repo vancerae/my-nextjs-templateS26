@@ -1,0 +1,14 @@
+# Query: list stuff table
+# ContextLines: 1
+
+2 results - 2 files
+
+src/components/StuffItem.tsx:
+  3  
+  4: /* Renders a single row in the List Stuff table. See list/page.tsx. */
+  5  const StuffItem = ({ name, quantity, condition, id, remove }: Stuff) => (
+
+src/components/StuffItemAdmin.tsx:
+  2  
+  3: /* Renders a single row in the List Stuff table. See list/page.tsx. */
+  4  const StuffItemAdmin = ({ name, quantity, condition, owner, id, remove }: Stuff) => (
